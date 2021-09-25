@@ -32,6 +32,9 @@ This project was developed with the technologies above:
 - [React](https://reactjs.org)
 - [TypeScript](https://www.typescriptlang.org)
 - [NextJS](https://nextjs.org)
+- [Chakra UI](https://chakra-ui.com)
+- [Emotion](https://emotion.sh)
+- [Framer Motion](https://framer.com/motion)
 
 ## 🚀 How to execute
 
