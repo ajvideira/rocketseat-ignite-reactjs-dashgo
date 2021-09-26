@@ -3,7 +3,7 @@ import {
   Input as ChakraInput,
   FormLabel,
   InputProps as ChakraInputProps,
-} from '@chakra-ui/react';
+} from "@chakra-ui/react";
 
 type InputProps = ChakraInputProps & {
   name: string;
@@ -22,7 +22,7 @@ export function Input({ name, label, ...rest }: InputProps) {
         bgColor="gray.900"
         size="lg"
         _hover={{
-          bg: 'gray.900',
+          bg: "gray.900",
         }}
         {...rest}
       />
