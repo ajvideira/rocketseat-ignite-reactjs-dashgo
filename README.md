@@ -35,6 +35,7 @@ This project was developed with the technologies above:
 - [Chakra UI](https://chakra-ui.com)
 - [Emotion](https://emotion.sh)
 - [Framer Motion](https://framer.com/motion)
+- [react-icons](https://react-icons.github.io/react-icons)
 
 ## 🚀 How to execute
 
