@@ -36,6 +36,7 @@ This project was developed with the technologies above:
 - [Emotion](https://emotion.sh)
 - [Framer Motion](https://framer.com/motion)
 - [react-icons](https://react-icons.github.io/react-icons)
+- [ApexCharts](https://apexcharts.com)
 
 ## 🚀 How to execute
 
