@@ -13,7 +13,7 @@ import {
   Thead,
   Tr,
 } from "@chakra-ui/react";
-import { RiAddLine, RiEditLine } from "react-icons/ri";
+import { RiAddLine, RiPencilLine } from "react-icons/ri";
 import { Header } from "../../components/Header";
 import { Pagination } from "../../components/Pagination";
 import { Sidebar } from "../../components/Sidebar";
@@ -74,7 +74,7 @@ export default function UserList() {
                     size="sm"
                     fontSize="sm"
                     colorScheme="purple"
-                    leftIcon={<Icon as={RiEditLine} fontSize="16" />}
+                    leftIcon={<Icon as={RiPencilLine} fontSize="16" />}
                     display="flex"
                     alignItems="center"
                     justifyContent="center"
@@ -102,7 +102,7 @@ export default function UserList() {
                     size="sm"
                     fontSize="sm"
                     colorScheme="purple"
-                    leftIcon={<Icon as={RiEditLine} fontSize="16" />}
+                    leftIcon={<Icon as={RiPencilLine} fontSize="16" />}
                   >
                     Editar
                   </Button>
@@ -127,7 +127,7 @@ export default function UserList() {
                     size="sm"
                     fontSize="sm"
                     colorScheme="purple"
-                    leftIcon={<Icon as={RiEditLine} fontSize="16" />}
+                    leftIcon={<Icon as={RiPencilLine} fontSize="16" />}
                   >
                     Editar
                   </Button>
