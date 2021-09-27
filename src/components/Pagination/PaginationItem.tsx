@@ -13,17 +13,17 @@ export function PaginationItem({ page, isCurrent }: PaginationItemProps) {
       width="4"
       colorScheme={isCurrent && "pink"}
       disabled={isCurrent}
-      _disabled={
-        isCurrent && {
-          bg: "pink.500",
-          cursor: "default",
-        }
-      }
-      bg={!isCurrent && "gray.700"}
+      _disabled={{
+        bg: "pink.500",
+        cursor: "default",
+      }}
+      bg={!isCurrent ? "gray.700" : {}}
       hover={
-        !isCurrent && {
-          bg: "gray.500",
-        }
+        !isCurrent
+          ? {
+              bg: "gray.500",
+            }
+          : {}
       }
     >
       {page}
