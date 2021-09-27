@@ -18,7 +18,7 @@ import { Header } from "../../components/Header";
 import { Pagination } from "../../components/Pagination";
 import { Sidebar } from "../../components/Sidebar";
 
-export default function UsersPage() {
+export default function UserList() {
   return (
     <Flex h="100vh" direction="column">
       <Header />
