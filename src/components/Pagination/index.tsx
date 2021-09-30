@@ -1,9 +1,17 @@
-import { Box, Button, HStack } from "@chakra-ui/react";
+import { Box, HStack, Stack, useBreakpointValue } from "@chakra-ui/react";
 import { PaginationItem } from "./PaginationItem";
 
 export function Pagination() {
+  const isWideVersion = useBreakpointValue({ base: false, lg: true });
+
   return (
-    <HStack spacing="6" mt="8" justify="space-between" align="center">
+    <Stack
+      spacing="6"
+      mt="8"
+      justify="space-between"
+      align="center"
+      direction={isWideVersion ? "row" : "column"}
+    >
       <Box>
         <strong>0</strong> - <strong>10</strong> de <strong>100</strong>
       </Box>
@@ -15,6 +23,6 @@ export function Pagination() {
         <PaginationItem page={5} />
         <PaginationItem page={6} />
       </HStack>
-    </HStack>
+    </Stack>
   );
 }
