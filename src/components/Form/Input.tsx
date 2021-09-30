@@ -12,10 +12,9 @@ type InputProps = ChakraInputProps & {
 
 export function Input({ name, label, ...rest }: InputProps) {
   return (
-    <FormControl>
-      {label && <FormLabel for={name}>{label}</FormLabel>}
+    <FormControl id={name}>
+      {label && <FormLabel>{label}</FormLabel>}
       <ChakraInput
-        id={name}
         name={name}
         variant="filled"
         focusBorderColor="pink.500"
