@@ -38,6 +38,7 @@ This project was developed with the technologies above:
 - [react-icons](https://react-icons.github.io/react-icons)
 - [ApexCharts](https://apexcharts.com)
 - [react-hook-form](https://react-hook-form.com)
+- [yup](https://github.com/jquense/yup)
 
 ## 🚀 How to execute
 
