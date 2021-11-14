@@ -23,13 +23,13 @@ import { Pagination } from "../../components/Pagination";
 import { Sidebar } from "../../components/Sidebar";
 import { Header } from "../../components/Header";
 import { User } from "../../models/user";
+import { api } from "../../services/api";
 
 export default function UserList() {
   const { data, isLoading, isFetching, error } = useQuery<User[]>(
     "users",
     async () => {
-      const response = await fetch("/api/users");
-      const data = await response.json();
+      const { data } = await api("/users");
       return data.users.map((user: User) => {
         return {
           ...user,
