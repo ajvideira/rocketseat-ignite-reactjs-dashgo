@@ -24,27 +24,10 @@ import { Sidebar } from "../../components/Sidebar";
 import { Header } from "../../components/Header";
 import { User } from "../../models/user";
 import { api } from "../../services/api";
+import { useUsers } from "../../hooks/useUsers";
 
 export default function UserList() {
-  const { data, isLoading, isFetching, error } = useQuery<User[]>(
-    "users",
-    async () => {
-      const { data } = await api("/users");
-      return data.users.map((user: User) => {
-        return {
-          ...user,
-          created_at: new Date(user.created_at).toLocaleDateString("pt-BR", {
-            day: "2-digit",
-            month: "short",
-            year: "numeric",
-          }),
-        };
-      });
-    },
-    {
-      staleTime: 1000 * 5, //5 seconds
-    }
-  );
+  const { data, isLoading, isFetching, error } = useUsers();
 
   const isWideVersion = useBreakpointValue({ base: false, lg: true });
 
