@@ -22,12 +22,22 @@ import Link from "next/link";
 import { Pagination } from "../../components/Pagination";
 import { Sidebar } from "../../components/Sidebar";
 import { Header } from "../../components/Header";
+import { User } from "../../models/user";
 
 export default function UserList() {
-  const { data, isLoading, error } = useQuery("users", async () => {
+  const { data, isLoading, error } = useQuery<User[]>("users", async () => {
     const response = await fetch("/api/users");
     const data = await response.json();
-    return data;
+    return data.users.map((user: User) => {
+      return {
+        ...user,
+        created_at: new Date(user.created_at).toLocaleDateString("pt-BR", {
+          day: "2-digit",
+          month: "short",
+          year: "numeric",
+        }),
+      };
+    });
   });
 
   const isWideVersion = useBreakpointValue({ base: false, lg: true });
@@ -80,84 +90,34 @@ export default function UserList() {
                   </Tr>
                 </Thead>
                 <Tbody>
-                  <Tr>
-                    <Td px="6">
-                      <Checkbox colorScheme="pink" />
-                    </Td>
-                    <Td>
-                      <Box>
-                        <Text fontWeight="bold">Jonathan Videira</Text>
-                        <Text fontSize="sm" color="gray.300">
-                          jonathan.videira@gmail.com
-                        </Text>
-                      </Box>
-                    </Td>
-                    {isWideVersion && <Td>21 de set, 2021</Td>}
-                    <Td>
-                      <Button
-                        as="a"
-                        size="sm"
-                        fontSize="sm"
-                        colorScheme="purple"
-                        leftIcon={<Icon as={RiPencilLine} fontSize="16" />}
-                        iconSpacing={!isWideVersion ? 0 : 2}
-                      >
-                        {isWideVersion && "Editar"}
-                      </Button>
-                    </Td>
-                  </Tr>
-                  <Tr>
-                    <Td px="6">
-                      <Checkbox colorScheme="pink" />
-                    </Td>
-                    <Td>
-                      <Box>
-                        <Text fontWeight="bold">Jonathan Videira</Text>
-                        <Text fontSize="sm" color="gray.300">
-                          jonathan.videira@gmail.com
-                        </Text>
-                      </Box>
-                    </Td>
-                    {isWideVersion && <Td>21 de set, 2021</Td>}
-                    <Td>
-                      <Button
-                        as="a"
-                        size="sm"
-                        fontSize="sm"
-                        colorScheme="purple"
-                        leftIcon={<Icon as={RiPencilLine} fontSize="16" />}
-                        iconSpacing={!isWideVersion ? 0 : 2}
-                      >
-                        {isWideVersion && "Editar"}
-                      </Button>
-                    </Td>
-                  </Tr>
-                  <Tr>
-                    <Td px="6">
-                      <Checkbox colorScheme="pink" />
-                    </Td>
-                    <Td>
-                      <Box>
-                        <Text fontWeight="bold">Jonathan Videira</Text>
-                        <Text fontSize="sm" color="gray.300">
-                          jonathan.videira@gmail.com
-                        </Text>
-                      </Box>
-                    </Td>
-                    {isWideVersion && <Td>21 de set, 2021</Td>}
-                    <Td>
-                      <Button
-                        as="a"
-                        size="sm"
-                        fontSize="sm"
-                        colorScheme="purple"
-                        leftIcon={<Icon as={RiPencilLine} fontSize="16" />}
-                        iconSpacing={!isWideVersion ? 0 : 2}
-                      >
-                        {isWideVersion && "Editar"}
-                      </Button>
-                    </Td>
-                  </Tr>
+                  {data.map((user) => (
+                    <Tr key={user.id}>
+                      <Td px="6">
+                        <Checkbox colorScheme="pink" />
+                      </Td>
+                      <Td>
+                        <Box>
+                          <Text fontWeight="bold">{user.name}</Text>
+                          <Text fontSize="sm" color="gray.300">
+                            {user.email}
+                          </Text>
+                        </Box>
+                      </Td>
+                      {isWideVersion && <Td>{user.created_at}</Td>}
+                      <Td>
+                        <Button
+                          as="a"
+                          size="sm"
+                          fontSize="sm"
+                          colorScheme="purple"
+                          leftIcon={<Icon as={RiPencilLine} fontSize="16" />}
+                          iconSpacing={!isWideVersion ? 0 : 2}
+                        >
+                          {isWideVersion && "Editar"}
+                        </Button>
+                      </Td>
+                    </Tr>
+                  ))}
                 </Tbody>
               </Table>
               <Pagination />
