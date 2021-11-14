@@ -6,17 +6,19 @@ type PaginationProps = {
   perPage?: number;
   total: number;
   siblingPages?: number;
+  onPageChange: (page: number) => void;
 };
 
 export function Pagination({
   currentPage,
+  onPageChange,
   perPage = 10,
-  siblingPages = 1,
+  siblingPages = 2,
   total,
 }: PaginationProps) {
   const isWideVersion = useBreakpointValue({ base: false, lg: true });
 
-  const lastPage = Math.floor(total / perPage);
+  const lastPage = Math.ceil(total / perPage);
 
   const previousPages =
     currentPage > 1
@@ -41,10 +43,14 @@ export function Pagination({
       direction={isWideVersion ? "row" : "column"}
     >
       <Box>
-        <strong>0</strong> - <strong>10</strong> de <strong>100</strong>
+        <strong>{(currentPage - 1) * perPage + 1}</strong> -{" "}
+        <strong>{Math.min(currentPage * perPage, total)}</strong> de{" "}
+        <strong>{total}</strong>
       </Box>
       <HStack spacing="2">
-        {currentPage - siblingPages > 1 && <PaginationItem page={1} />}
+        {currentPage - siblingPages > 1 && (
+          <PaginationItem page={1} onClick={onPageChange} />
+        )}
 
         {currentPage - siblingPages > 2 && (
           <Text w={4} color="gray.300" align="center">
@@ -53,13 +59,13 @@ export function Pagination({
         )}
 
         {previousPages.map((page) => (
-          <PaginationItem key={page} page={page} />
+          <PaginationItem key={page} page={page} onClick={onPageChange} />
         ))}
 
-        <PaginationItem isCurrent page={currentPage} />
+        <PaginationItem isCurrent page={currentPage} onClick={onPageChange} />
 
         {nextPages.map((page) => (
-          <PaginationItem key={page} page={page} />
+          <PaginationItem key={page} page={page} onClick={onPageChange} />
         ))}
 
         {currentPage + siblingPages < lastPage - 1 && (
@@ -69,7 +75,7 @@ export function Pagination({
         )}
 
         {currentPage + siblingPages < lastPage && (
-          <PaginationItem page={lastPage} />
+          <PaginationItem page={lastPage} onClick={onPageChange} />
         )}
       </HStack>
     </Stack>
