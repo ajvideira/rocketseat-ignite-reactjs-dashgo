@@ -25,20 +25,26 @@ import { Header } from "../../components/Header";
 import { User } from "../../models/user";
 
 export default function UserList() {
-  const { data, isLoading, error } = useQuery<User[]>("users", async () => {
-    const response = await fetch("/api/users");
-    const data = await response.json();
-    return data.users.map((user: User) => {
-      return {
-        ...user,
-        created_at: new Date(user.created_at).toLocaleDateString("pt-BR", {
-          day: "2-digit",
-          month: "short",
-          year: "numeric",
-        }),
-      };
-    });
-  });
+  const { data, isLoading, error } = useQuery<User[]>(
+    "users",
+    async () => {
+      const response = await fetch("/api/users");
+      const data = await response.json();
+      return data.users.map((user: User) => {
+        return {
+          ...user,
+          created_at: new Date(user.created_at).toLocaleDateString("pt-BR", {
+            day: "2-digit",
+            month: "short",
+            year: "numeric",
+          }),
+        };
+      });
+    },
+    {
+      staleTime: 1000 * 5, //5 seconds
+    }
+  );
 
   const isWideVersion = useBreakpointValue({ base: false, lg: true });
 
