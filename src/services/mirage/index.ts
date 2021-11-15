@@ -1,4 +1,11 @@
-import { createServer, Factory, Model, Response, Server } from "miragejs";
+import {
+  ActiveModelSerializer,
+  createServer,
+  Factory,
+  Model,
+  Response,
+  Server,
+} from "miragejs";
 import { User } from "../../models/user";
 import { internet, date } from "faker";
 
@@ -7,11 +14,14 @@ export function makeServer() {
     models: {
       user: Model.extend<Partial<User>>({}),
     },
+    serializers: {
+      application: ActiveModelSerializer,
+    },
     factories: {
       user: Factory.extend({
         name: (index: number) => `User ${index + 1}`,
         email: (index: number) => internet.email().toLowerCase(),
-        created_at: () => date.recent(2),
+        createdAt: () => date.recent(2),
       }),
     },
     seeds(server: Server) {
