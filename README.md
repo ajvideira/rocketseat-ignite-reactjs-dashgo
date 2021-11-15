@@ -4,7 +4,6 @@
 <h3 align="center">Chapter #4</h3>
 <p align="center">
   <a href="#-Project">Project</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#hammer_and_wrench-Features">Features</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-Technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-How-to-execute">How to execute</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-Licence">Licence</a>
@@ -14,16 +13,13 @@
   <img alt="License" src="https://img.shields.io/static/v1?label=license&message=MIT&color=069446&labelColor=000000">
 </p>
 
+<img align="center" src=".github/images/dashgo-project.png" alt="Dash GO" />
+<br />
+<br />
+
 ## 💻 Project
 
 This is the Fourth project of ReactJS track of Ignite course from [Rocketseat](https://rocketseat.com.br/).
-
-## :hammer_and_wrench: Features
-
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-- [ ] Feature 4
 
 ## ✨ Technologies
 
@@ -39,6 +35,9 @@ This project was developed with the technologies above:
 - [ApexCharts](https://apexcharts.com)
 - [react-hook-form](https://react-hook-form.com)
 - [yup](https://github.com/jquense/yup)
+- [react-query](https://react-query.tanstack.com/)
+- [miragejs](https://miragejs.com)
+- [faker](http://marak.github.io/faker.js)
 
 ## 🚀 How to execute
 
